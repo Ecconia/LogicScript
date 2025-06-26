@@ -2,7 +2,6 @@
 using LogicScript.Parsing.Structures;
 using LogicScript.Parsing.Structures.Statements;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace LogicScript.Interpreting

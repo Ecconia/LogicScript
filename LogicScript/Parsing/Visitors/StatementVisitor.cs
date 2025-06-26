@@ -3,7 +3,6 @@ using LogicScript.Parsing.Structures;
 using LogicScript.Parsing.Structures.Expressions;
 using LogicScript.Parsing.Structures.Statements;
 using System.Linq;
-using System.Net.Mime;
 
 namespace LogicScript.Parsing.Visitors
 {

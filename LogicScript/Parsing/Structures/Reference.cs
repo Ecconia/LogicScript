@@ -31,7 +31,7 @@ namespace LogicScript.Parsing.Structures
         public override IPortInfo Port => PortInfo;
 
         public int StartIndex => PortInfo.StartIndex;
-        public int BitSize => PortInfo.BitSize;
+        public new int BitSize => PortInfo.BitSize;
 
         public override bool IsWritable => PortInfo.Target is MachinePorts.Output or MachinePorts.Register;
         public override bool IsReadable => PortInfo.Target is MachinePorts.Input or MachinePorts.Register;
@@ -63,7 +63,7 @@ namespace LogicScript.Parsing.Structures
         public override IPortInfo Port => LocalInfo;
 
         public ICodeNode Declaration => LocalInfo;
-        public int BitSize => LocalInfo.BitSize;
+        public new int BitSize => LocalInfo.BitSize;
 
         public override bool IsWritable => true;
         public override bool IsReadable => true;

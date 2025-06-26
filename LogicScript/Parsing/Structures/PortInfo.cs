@@ -15,7 +15,7 @@ namespace LogicScript.Parsing.Structures
         Register
     }
 
-    internal readonly struct PortInfo : IPortInfo
+    internal readonly struct PortInfo : IPortInfo, IEquatable<PortInfo>
     {
         public MachinePorts Target { get; }
         public int StartIndex { get; }
@@ -37,6 +37,14 @@ namespace LogicScript.Parsing.Structures
         }
 
         public override bool Equals(object obj) => obj is IPortInfo other && Equals(other);
+
+        public bool Equals(PortInfo other)
+            => Target == other.Target && StartIndex == other.StartIndex && BitSize == other.BitSize && Span.Equals(other.Span);
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine((int)Target, StartIndex, BitSize, Span);
+        }
 
         public bool Equals(IPortInfo other)
         {

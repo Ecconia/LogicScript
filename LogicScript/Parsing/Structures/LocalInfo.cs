@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LogicScript.Parsing.Structures
 {
-    internal readonly struct LocalInfo : IPortInfo
+    internal readonly struct LocalInfo : IPortInfo, IEquatable<LocalInfo>
     {
         public int BitSize { get; }
         public string Name { get; }
@@ -21,6 +22,12 @@ namespace LogicScript.Parsing.Structures
         }
 
         public override bool Equals(object obj) => obj is IPortInfo other && Equals(other);
+
+        public bool Equals(LocalInfo other)
+            => BitSize == other.BitSize && Name == other.Name && Span.Equals(other.Span);
+
+        public override int GetHashCode()
+            => HashCode.Combine(BitSize, Name, Span);
 
         public bool Equals(IPortInfo other)
         {

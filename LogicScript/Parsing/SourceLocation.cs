@@ -21,6 +21,9 @@ namespace LogicScript.Parsing
 
         public override bool Equals(object obj) => obj is SourceLocation other && Equals(other);
 
+        public override int GetHashCode()
+            => HashCode.Combine(Line, Column);
+
         public bool Equals(SourceLocation other)
             => other.Line == Line && other.Column == Column;
     }
